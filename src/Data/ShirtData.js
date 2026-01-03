@@ -17,4 +17,13 @@ export const SHIRT_COLLECTION = [
     color: "Multi-Color Set",
     tag: "COLLECTION",
   },
+  {
+    id: 3,
+    name: "SAVOR EXPLORE VIBE",
+    price: "$45.00",
+    description: "Available in multiple premium colors.",
+    image: "/images/saz3.jpg",
+    color: "Multi-Color Set",
+    tag: "COLLECTION",
+  },
 ];

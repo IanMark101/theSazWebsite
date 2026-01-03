@@ -22,9 +22,21 @@ export const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <a
           href="#"
-          className="text-4xl font-black tracking-tighter italic text-black"
+          className="inline-flex items-center rounded-md transition-all"
         >
-          SAZ<span className="text-gray-300">.</span>
+          <span className="inline-flex items-center rounded-l-md bg-white px-4 py-2 text-black font-black text-3xl md:text-4xl tracking-tighter italic">
+            The
+          </span>
+          <span className="inline-flex items-center rounded-r-md bg-black px-4 py-2 text-white font-black text-3xl md:text-4xl tracking-tighter italic">
+            SAZ
+          </span>
+          <span
+            className={`${
+              scrolled ? "text-gray-300" : "text-black/60"
+            } ml-2 text-2xl md:text-3xl`}
+          >
+            .
+          </span>
         </a>
 
         {/* Desktop Links */}
@@ -33,14 +45,11 @@ export const Navbar = () => {
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
-              className="text-xs font-black tracking-[0.2em] text-gray-400 hover:text-black transition-colors"
+              className="text-xm font-black tracking-[0.2em] text-gray-400 hover:text-black transition-colors"
             >
               {item}
             </a>
           ))}
-          <button className="bg-black text-white px-6 py-2 text-xs font-black tracking-widest hover:bg-gray-800 transition-all">
-            SHOP DROP
-          </button>
         </div>
 
         <button

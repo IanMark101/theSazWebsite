@@ -8,9 +8,6 @@ export const VloggersSection = () => (
         <h2 className="text-6xl md:text-8xl font-black tracking-tighter mb-4 italic">
           CREATORS
         </h2>
-        <p className="text-gray-500 font-bold tracking-[0.3em] uppercase">
-          Documenting the Culture
-        </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

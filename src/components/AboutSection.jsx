@@ -12,9 +12,6 @@ export const AboutSection = () => (
         "We make shirts for the people who eat, film, and live the street
         culture."
       </h2>
-      <p className="text-gray-400 font-bold tracking-widest text-xs">
-        ESTABLISHED IN THE KITCHENS AND THE STREETS
-      </p>
     </div>
   </section>
 );

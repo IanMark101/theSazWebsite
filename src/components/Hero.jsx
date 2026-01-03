@@ -8,15 +8,26 @@ export const Hero = () => {
     {
       title: "SAVOR EXPLORE VIBE",
       subtitle: "The Lifestyle",
-      image: "/images/sazhomepage.jpg",
+      type: "image",
+      src: "/images/sazhomepage.jpg",
       description:
         "Street culture meets style. The uniform of modern creators.",
     },
     {
       title: "THE SAZ COLLECTION",
       subtitle: "Multi-Color Edition",
-      image: "/images/sazCollection.jpg",
+      type: "image",
+      src: "/images/sazCollection.jpg",
       description: "Choose your vibe. Express yourself.",
+    },
+    {
+      title: "LIFESTYLE VIDEO",
+      subtitle: "Behind the Scenes",
+      type: "video",
+      // use public root path, not "./public/..."
+      src: "/videos/saz-hero.mp4",
+      poster: "/images/sazhomepage-poster.jpg",
+      description: "Watch the SAZ community in motion.",
     },
   ];
 
@@ -43,16 +54,36 @@ export const Hero = () => {
                 : "opacity-0 pointer-events-none"
             }`}
           >
-            <img
-              src={slide.image}
-              alt={slide.title}
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                console.error(`Failed to load image: ${slide.image}`);
-                e.target.src =
-                  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800'%3E%3Crect fill='%23333' width='1200' height='800'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23999' font-size='24' font-family='Arial'%3EImage Not Found%3C/text%3E%3C/svg%3E";
-              }}
-            />
+            {slide.type === "video" ? (
+              <video
+                className="w-full h-full object-cover"
+                poster={slide.poster}
+                muted
+                autoPlay
+                loop
+                playsInline
+                preload="metadata"
+                onLoadedData={() =>
+                  console.info("Hero background video loaded:", slide.src)
+                }
+                onError={(e) =>
+                  console.error("Hero background video error:", slide.src, e)
+                }
+              >
+                <source src={slide.src} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              <img
+                src={slide.src}
+                alt={slide.title}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.target.src =
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800'%3E%3Crect fill='%23333' width='1200' height='800'/%3E%3C/text%3E%3C/svg%3E";
+                }}
+              />
+            )}
             <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
           </div>
         ))}
@@ -102,15 +133,44 @@ export const Hero = () => {
           {/* Right - Featured Image */}
           <div className="relative h-[500px] hidden lg:block">
             <div className="relative w-full h-full border-4 border-white overflow-hidden group shadow-2xl bg-gray-800">
-              <img
-                src={heroImages[currentSlide].image}
-                alt="Featured Shirt"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                onError={(e) => {
-                  e.target.src =
-                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Crect fill='%23444' width='600' height='600'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23999' font-size='18'%3EImage Not Found%3C/text%3E%3C/svg%3E";
-                }}
-              />
+              {heroImages[currentSlide].type === "video" ? (
+                <video
+                  className="w-full h-full object-cover"
+                  poster={heroImages[currentSlide].poster}
+                  muted
+                  autoPlay
+                  loop
+                  playsInline
+                  preload="metadata"
+                  controls /* remove after debug */
+                  onLoadedData={() =>
+                    console.info(
+                      "Hero featured video loaded:",
+                      heroImages[currentSlide].src
+                    )
+                  }
+                  onError={(e) =>
+                    console.error(
+                      "Hero featured video error:",
+                      heroImages[currentSlide].src,
+                      e
+                    )
+                  }
+                >
+                  <source src={heroImages[currentSlide].src} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                <img
+                  src={heroImages[currentSlide].src}
+                  alt={heroImages[currentSlide].title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  onError={(e) => {
+                    e.target.src =
+                      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Crect fill='%23444' width='600' height='600'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23999' font-size='18'%3EImage Not Found%3C/text%3E%3C/svg%3E";
+                  }}
+                />
+              )}
             </div>
           </div>
         </div>

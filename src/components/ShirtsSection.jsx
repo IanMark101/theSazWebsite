@@ -1,6 +1,6 @@
 import { Utensils } from "lucide-react";
 import { ShirtCard } from "./ShirtCard";
-import { SHIRT_COLLECTION } from "../Data/shirtData";
+import { SHIRT_COLLECTION } from "../data/shirtData";
 
 export const ShirtsSection = () => (
   <section id="shirts" className="py-24 bg-white">

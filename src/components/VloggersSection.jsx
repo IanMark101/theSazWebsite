@@ -1,5 +1,5 @@
 import { VloggerCard } from "./VloggerCard";
-import { VLOGGERS } from "../Data/vloggerData";
+import { VLOGGERS } from "../data/vloggerData";
 
 export const VloggersSection = () => (
   <section id="vloggers" className="py-24 bg-black text-white">
